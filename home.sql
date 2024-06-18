@@ -17,7 +17,6 @@ create table tb_credenciais (
     id_credencial serial primary key,
     id_usuario serial unique,
     email varchar not null,
-<<<<<<< HEAD
     senha varchar not null,
 
     foreign key (id_usuario) references tb_usuário(id_usuario)
@@ -29,9 +28,6 @@ create table tb_contato (
     email int not null
     
     foreign key (email) references tb_credenciais(email)
-=======
-    senha varchar not null
->>>>>>> 3897fc98e8147e50edb413ea53e3d71f632e0374
 );
 
 create table tb_usuarios (
@@ -45,12 +41,7 @@ create table tb_usuarios (
     endereco int,
 
     -- Aqui ficam as referências desta tabela com outras (FK)
-<<<<<<< HEAD
     foreign key (credencial) references tb_credenciais (id_credencial)
 )
-=======
-    foreign key (credencial) references tb_credenciais (id_credencial),
-);
->>>>>>> 3897fc98e8147e50edb413ea53e3d71f632e0374
 
 
