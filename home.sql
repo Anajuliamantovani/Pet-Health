@@ -9,7 +9,15 @@ create table tb_credenciais (
     senha varchar not null,
 
     foreign key (id_usuario) references tb_usuário(id_usuario)
-)
+);
+
+create table tb_contato (
+    id_contato serial primary key
+    celular varchar (14) unique not null
+    email int not null
+    
+    foreign key (email) references tb_credenciais(email)
+);
 
 create table tb_usuarios (
     id_usuario serial primary key,
@@ -22,7 +30,7 @@ create table tb_usuarios (
     endereço serial,
 
     -- Aqui ficam as referências desta tabela com outras (FK)
-    foreign key (credencial) references tb_credenciais (id_credencial),
+    foreign key (credencial) references tb_credenciais (id_credencial)
 )
 
 
