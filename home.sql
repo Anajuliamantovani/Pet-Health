@@ -2,7 +2,16 @@
 
 create database LojaPet;
 
-create table tb_usuários (
+create table tb_credenciais (
+    id_credencial serial primary key,
+    id_usuario serial unique,
+    email varchar not null,
+    senha varchar not null,
+
+    foreign key (id_usuario) references tb_usuário(id_usuario)
+)
+
+create table tb_usuarios (
     id_usuario serial primary key,
     credencial serial,
     nome varchar(50) not null,
@@ -13,17 +22,7 @@ create table tb_usuários (
     endereço serial,
 
     -- Aqui ficam as referências desta tabela com outras (FK)
-    foreign key (credencial) references tb_credenciais (id),
-    foreign key (endereço) references tb_endereços (id),
-    foreign key (contato) references tb_contatos (id)
+    foreign key (credencial) references tb_credenciais (id_credencial),
 )
 
-create table tb_credenciais (
-    id_credencial serial primary key,
-    id_usuario serial unique,
-    email varchar not null,
-    senha varchar not null,
-
-    foreign key (id_usuario) references tb_usuário(id_usuario)
-)
 
