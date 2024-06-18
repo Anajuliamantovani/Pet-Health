@@ -18,8 +18,6 @@ create table tb_credenciais (
     id_usuario serial unique,
     email varchar not null,
     senha varchar not null,
-
-    foreign key (id_usuario) references tb_usuário(id_usuario)
 );
 
 create table tb_contato (
@@ -41,6 +39,7 @@ create table tb_usuarios (
     endereco int,
 
     -- Aqui ficam as referências desta tabela com outras (FK)
+    foreign key (id_usuario) references tb_credenciais (id_usuario) 
     foreign key (credencial) references tb_credenciais (id_credencial)
 )
 
