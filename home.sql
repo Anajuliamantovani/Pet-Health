@@ -15,7 +15,6 @@ create table tb_enderecos (
 
 create table tb_credenciais (
     id_credencial serial primary key,
-    id_usuario serial unique,
     email varchar not null,
     senha varchar not null,
 );
@@ -30,7 +29,7 @@ create table tb_contato (
 
 create table tb_usuarios (
     id_usuario serial primary key,
-    credencial serial unique,
+    id_credencial serial unique,
     nome varchar(50) not null,
     sobrenome varchar(50) not null,
     cpf varchar(11) unique not null,
@@ -40,7 +39,7 @@ create table tb_usuarios (
 
     -- Aqui ficam as referências desta tabela com outras (FK)
     foreign key (id_usuario) references tb_credenciais (id_usuario) 
-    foreign key (credencial) references tb_credenciais (id_credencial)
+    foreign key (id_redencial) references tb_credenciais (id_credencial)
 )
 
 
