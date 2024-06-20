@@ -10,21 +10,39 @@ create table tb_enderecos (
     cidade varchar(50) not null,
     estado varchar(50) not null,
     numero varchar(10),
-    complemento varchar(100),
+    complemento varchar(100)
 );
 
 create table tb_credenciais (
     id_credencial serial primary key,
     email varchar not null,
-    senha varchar not null,
+    senha varchar not null
 );
 
 create table tb_contato (
-    id_contato serial primary key
-    celular varchar (14) unique not null
-    email int not null
+    id_contato serial primary key,
+    celular varchar (14) unique not null,
+    email int not null,
     
     foreign key (email) references tb_credenciais(email)
+);
+
+create table tb_pedidos (
+    id_pedidos serial primary key,
+    id_usuario serial unique,
+    data_de_pedido timestamp defaut NOW,
+    produtos int not null,
+    quantidade int(100),
+    preco numeric(5,2) not null  
+);
+
+create table tb_produtos (
+    id_produtos serial primary key,
+    nome_do_produto varchar not null,
+    descrição varchar not null,
+    quantidade int(100),
+    preco numeric(5,2) not null
+
 );
 
 create table tb_usuarios (
@@ -38,8 +56,9 @@ create table tb_usuarios (
     endereco int,
 
     -- Aqui ficam as referências desta tabela com outras (FK)
-    foreign key (id_usuario) references tb_credenciais (id_usuario) 
-    foreign key (id_redencial) references tb_credenciais (id_credencial)
-)
+    foreign key (id_usuario) references tb_credenciais (id_usuario),
+    foreign key (id_redencial) references tb_credenciais (id_credencial),
+    foreign key (id_usuario) references tb_pedidos (id_Pedidos)
+);
 
 
