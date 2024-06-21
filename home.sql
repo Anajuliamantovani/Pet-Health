@@ -56,6 +56,8 @@ create table tb_usuarios (
     endereco int,
 
     -- Aqui ficam as referências desta tabela com outras (FK)
+    foreign key (contato) references tb_contato (id_contato),
+    foreign key (endereco) references tb_enderecos (id_endereco),
     foreign key (id_usuario) references tb_credenciais (id_usuario),
     foreign key (id_redencial) references tb_credenciais (id_credencial),
     foreign key (id_usuario) references tb_pedidos (id_Pedidos)
